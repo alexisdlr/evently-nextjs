@@ -1,9 +1,8 @@
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="">
- 
+    <main className="wrapper">
+      <h1 className="text-4xl font-bold">Welcome to Evently</h1>
     </main>
   );
 }
