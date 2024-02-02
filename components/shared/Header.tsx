@@ -22,7 +22,7 @@ const Header = () => {
             <NavItems />
           </nav>
         </SignedIn>
-        <div className="flex w-32 justify-end">
+        <div className="flex w-32 gap-x-2 justify-end">
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
             <MobileNav />
