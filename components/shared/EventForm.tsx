@@ -32,7 +32,6 @@ interface EventFormProps {
 }
 
 const EventForm = ({ userId, type }: EventFormProps) => {
-
   const [files, setFiles] = useState<File[]>([]);
   const initialValues = eventDefaultValues;
   const { startUpload } = useUploadThing("imageUploader");
@@ -55,14 +54,14 @@ const EventForm = ({ userId, type }: EventFormProps) => {
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl },
           userId,
-          path: "/profile"
+          path: "/profile",
         });
-        if(newEvent) {
+        if (newEvent) {
           form.reset();
           router.push(`/events/${newEvent._id}`);
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   }
@@ -98,6 +97,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                   <Dropdown
                     onChangeHandler={field.onChange}
                     value={field.value}
+                    userId={userId}
                   />
                 </FormControl>
                 <FormMessage />
