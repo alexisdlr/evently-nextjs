@@ -76,11 +76,11 @@ const EventForm = ({ userId, type }: EventFormProps) => {
             control={form.control}
             name="title"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full ">
                 <FormControl>
                   <Input
                     placeholder="Event Title"
-                    className="input-field"
+                    className="input-field dark:bg-slate-700" 
                     {...field}
                   />
                 </FormControl>
