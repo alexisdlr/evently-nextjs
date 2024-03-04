@@ -81,7 +81,7 @@ const EventDetail = async ({
           </div>
           <div className="flex flex-col gap-2">
             <p className="p-bold-20 text-grey-600 dark:text-grey-400">
-              What You'll Learn in this Event:
+              What You will Learn in this Event:
             </p>
             <p className="p-medium-16 lg:p-regular-20 dark:text-grey-400/90">
               {event.description}
@@ -89,7 +89,6 @@ const EventDetail = async ({
             <p className="p-medium-16 lg:p-regular-20 truncate text-primary-500 underline">
               {event.url}
             </p>
-
           </div>
         </div>
       </div>
