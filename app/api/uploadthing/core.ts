@@ -1,8 +1,8 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
- 
+import { auth } from "@clerk/nextjs";
+
 const f = createUploadthing();
  
-const auth = (req: Request) => ({ id: "fakeId" }); // Fake auth function
  
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
@@ -11,13 +11,13 @@ export const ourFileRouter = {
     // Set permissions and file types for this FileRoute
     .middleware(async ({ req }) => {
       // This code runs on your server before upload
-      const user = await auth(req);
+      const {userId} = auth();
  
       // If you throw, the user will not be able to upload
-      if (!user) throw new Error("Unauthorized");
+      if (!userId) throw new Error("Unauthorized");
  
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: user.id };
+      return { userId };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
