@@ -1,3 +1,4 @@
+"use client";
 import {
   Select,
   SelectContent,
@@ -20,6 +21,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Input } from "../ui/input"
 import { createCategory, getAllCategories } from "@/lib/actions/category.actions"
+import { useThemeStore } from "@/store/theme";
 
 type DropdownProps = {
   value?: string
@@ -28,6 +30,7 @@ type DropdownProps = {
 }
 
 const Dropdown = ({ value, onChangeHandler, userId }: DropdownProps) => {
+  const { darkMode } = useThemeStore()
   const [categories, setCategories] = useState<ICategory[]>([])
   const [newCategory, setNewCategory] = useState('');
 
@@ -52,19 +55,19 @@ const Dropdown = ({ value, onChangeHandler, userId }: DropdownProps) => {
 
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
-      <SelectTrigger className="select-field dark:bg-slate-700 dark:text-white">
+      <SelectTrigger className="select-field dark:bg-slate-500/10 dark:text-white">
         <SelectValue placeholder="Category" />
       </SelectTrigger>
-      <SelectContent className="dark:bg-slate-700">
+      <SelectContent className={`${darkMode ? 'bg-slate-900 text-white': 'bg-white'}`}>
         {categories.length > 0 && categories.map((category) => (
-          <SelectItem key={category._id} value={category._id} className="select-item p-regular-14 dark:bg-slate-700">
+          <SelectItem key={category._id} value={category._id} className="select-item p-regular-14 ">
             {category.name}
           </SelectItem>
         ))}
 
-        <AlertDialog>
+        <AlertDialog >
           <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">Add new category</AlertDialogTrigger>
-          <AlertDialogContent className="bg-white">
+          <AlertDialogContent className="bg-white" >
             <AlertDialogHeader>
               <AlertDialogTitle>New Category</AlertDialogTitle>
               <AlertDialogDescription>

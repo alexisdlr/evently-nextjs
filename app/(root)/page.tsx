@@ -1,11 +1,14 @@
+import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
+import { getAllEvents } from "@/lib/actions/events.actions";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const {sessionClaims} = auth();
-  const userId = sessionClaims?.userId as string;
+  const { sessionClaims } = auth();
+
+  const events = await getAllEvents({ query: "", limit: 4, page: 1, category: "" });
   return (
     <>
       <section className=" py-5 md:py-10">
@@ -23,7 +26,9 @@ export default async function Home() {
               asChild
               className="button w-full font-semibold sm:w-fit"
             >
-              <Link href="#events" className="dark:text-white font-semibold">Explore Now</Link>
+              <Link href="#events" className="dark:text-white font-semibold">
+                Explore Now
+              </Link>
             </Button>
           </div>
           <div className="flex justify-center">
@@ -47,6 +52,15 @@ export default async function Home() {
         <div className="flex w-full flex-col gap-5 md:flex-row">
           {/* <Search />
           <CategoryFilter /> */}
+          <Collection
+            data={events?.data || []}
+            emptyTitle="No events found"
+            emptyStateSubtext="Check back later for more events"
+            collectionType="All_Events"
+            limit={4}
+            page={1}
+            totalPages={1}
+          />
         </div>
       </section>
     </>

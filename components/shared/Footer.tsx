@@ -6,7 +6,7 @@ import Link from "next/link";
 const Footer = () => {
   const { darkMode } = useThemeStore();
   return (
-    <footer className="border-t bg-primary-50 dark:bg-[#040D12] dark:border-primary">
+    <footer className="border-t bg-primary-50 dark:bg-[#000114] dark:border-primary">
       <div className="flex-center wrapper flex-col flex-between gap-4 p-5 text-center sm:flex-row">
         <Link href={"/"} className="flex ">
           {darkMode ? (
