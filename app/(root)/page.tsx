@@ -1,17 +1,25 @@
 import Collection from "@/components/shared/Collection";
+import MotionSection from "@/components/shared/animated/MotionSection";
 import { Button } from "@/components/ui/button";
 import { getAllEvents } from "@/lib/actions/events.actions";
-import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const { sessionClaims } = auth();
-
-  const events = await getAllEvents({ query: "", limit: 4, page: 1, category: "" });
+  const events = await getAllEvents({
+    query: "",
+    limit: 4,
+    page: 1,
+    category: "",
+  });
   return (
     <>
-      <section className=" py-5 md:py-10">
+      <MotionSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 100 }}
+        transition={{ delay: 0.5 }}
+        className=" py-5 md:py-10"
+      >
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold dark:text-white">
@@ -41,7 +49,7 @@ export default async function Home() {
             />
           </div>
         </div>
-      </section>
+      </MotionSection>
       <section
         id="events"
         className="wrapper my-8 flex flex-col gap-8 md:gap-12"

@@ -7,12 +7,18 @@ import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import SwitcherTheme from "../ui/SwitcherTheme";
 import { useThemeStore } from "@/store/theme";
+import { MotionHeader } from "./animated/MotionHeader";
 
 const Header = () => {
   const { darkMode } = useThemeStore();
 
   return (
-    <header className="w-full border-b dark:border-primary-500">
+    <MotionHeader
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 100 }}
+      transition={{ delay: 0.5 }}
+      className="w-full border-b dark:border-primary-500"
+    >
       <div className="wrapper flex items-center justify-between">
         <Link rel="stylesheet" href="/">
           {darkMode ? (
@@ -43,13 +49,15 @@ const Header = () => {
           </SignedIn>
           <SignedOut>
             <Button asChild className="rounded-full" size={"lg"}>
-              <Link href="/sign-in" className="dark:text-white">Login</Link>
+              <Link href="/sign-in" className="dark:text-white">
+                Login
+              </Link>
             </Button>
           </SignedOut>
           <SwitcherTheme />
         </div>
       </div>
-    </header>
+    </MotionHeader>
   );
 };
 
