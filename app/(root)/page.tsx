@@ -65,7 +65,7 @@ export default async function Home() {
             emptyTitle="No events found"
             emptyStateSubtext="Check back later for more events"
             collectionType="All_Events"
-            limit={4}
+            limit={6}
             page={1}
             totalPages={1}
           />
