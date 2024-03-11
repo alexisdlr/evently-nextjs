@@ -1,3 +1,4 @@
+import MotionSection from "@/components/shared/animated/MotionSection";
 import {
   getEventById,
   getRelatedEventsByCategory,
@@ -21,7 +22,12 @@ const EventDetail = async ({
   });
 
   return (
-    <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain dark:bg-[#040D12]">
+    <MotionSection
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 100 }}
+      transition={{ delay: 0.5 }}
+      className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain dark:bg-[#040D12]"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
         <Image
           src={event.imageUrl}
@@ -92,7 +98,7 @@ const EventDetail = async ({
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 };
 

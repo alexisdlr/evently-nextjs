@@ -23,7 +23,7 @@ const Card = ({ hasOrderLink, hidePrice, event }: CardProps) => {
         className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-400"
       />
       {isOrganizer && !hidePrice && (
-        <div className="absolute top-5 right-5 bg-white transition-all rounded-xl shadow-lg p-2 flex flex-col gap-2">
+        <div className="absolute top-5 right-5 bg-white dark:bg-slate-900/90 transition-all rounded-xl shadow-lg p-2 flex flex-col gap-2">
           <Link href={`/events/${event._id}/update`} className="hover:scale-105 transition-all">
             <Image 
               src="/assets/icons/edit.svg"
