@@ -1,7 +1,20 @@
 import EventForm from "@/components/shared/EventForm";
 import MotionSection from "@/components/shared/animated/MotionSection";
+import { getEventById } from "@/lib/actions/events.actions";
+import { auth } from "@clerk/nextjs";
 
-const UpdateEvent = () => {
+
+type UpdateEventProps = {
+  params: {
+    id: string;
+  };
+};
+
+const UpdateEvent = async ({params: {id}}: UpdateEventProps) => {
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
+
+  const event = await getEventById(id)
   return (
     <>
       <MotionSection
@@ -20,7 +33,7 @@ const UpdateEvent = () => {
         transition={{ delay: 0.5 }}
         className="wrapper my-8"
       >
-        <EventForm type="Edit" userId="" />
+        <EventForm type="Edit" userId={userId} event={event} eventId={event._id} />
       </MotionSection>
     </>
   );
