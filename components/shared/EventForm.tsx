@@ -27,6 +27,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/events.actions";
 import { IEvent } from "@/lib/database/models/event.model";
+
 interface EventFormProps {
   userId: string;
   type: "Create" | "Edit";
