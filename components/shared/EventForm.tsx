@@ -44,6 +44,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
     endDateTime: new Date(event.endDateTime) 
   }
   : eventDefaultValues;
+  
   const { startUpload } = useUploadThing("imageUploader");
   const router = useRouter();
   const form = useForm<z.infer<typeof eventFormSchema>>({
