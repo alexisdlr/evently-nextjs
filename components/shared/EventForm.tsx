@@ -153,6 +153,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             )}
           />
           <FormField
+          
             control={form.control}
             name="imageUrl"
             render={({ field }) => (
